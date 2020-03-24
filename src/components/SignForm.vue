@@ -1,19 +1,19 @@
 <template lang="pug">
   div.form
-    el-form(ref="form" :rules="rules" :model="form.form").form
+    el-form(:model="form.form" :rules="rules" ref="form" )
       el-form-item(prop="name")
         el-input(v-model="form.name" placeholder="Nombre")
       el-form-item(prop="surname")
         el-input(v-model="form.surname" placeholder="Apellidos")
       el-form-item(prop="email")
-        el-input(type="email" v-model="form.email" placeholder="Email")
+        el-input( v-model="form.email" placeholder="Email")
       el-form-item(prop="password")
         el-input(type="password" v-model="form.password" placeholder="Contraseña")
       el-form-item(prop="password2")
         el-input(type="password" v-model="form.password2"  placeholder="Repita contraseña")
-      el-form-item.form__switch(prop="ageVerification" label="Soy mayor de dieciocho años")
+      el-form-item(prop="ageVerification" label="Soy mayor de dieciocho años")
         el-switch(v-model="form.ageVerification" )
-      el-button(type="primary" ) Registrarse
+      el-button(type="primary" @click="submitForm('form')") Registrarse
 </template>
 <script>
 export default {
@@ -67,6 +67,18 @@ export default {
           { validator: validatePass2, trigger: 'blur' }
         ]
       }
+    }
+  },
+  methods: {
+    submitForm (form) {
+      this.$refs.form.validate((valid) => {
+        if (valid) {
+          alert('submit!')
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
     }
   }
 }

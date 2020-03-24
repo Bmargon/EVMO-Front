@@ -13,16 +13,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// .signUp-form {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   padding: $--standart-separator;
-//   @include gradienBlueBackground;
-//   &__title {
-//     @include title1($--white);
-//     margin-bottom: $--standart-content;
-//   }
-// }
+.signUp-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $--standart-separator;
+  @include gradienBlueBackground;
+  &__title {
+    @include title1($--white);
+    margin-bottom: $--standart-content;
+  }
+}
 
 </style>
