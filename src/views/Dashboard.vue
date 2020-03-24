@@ -6,9 +6,9 @@
         h1.main-section__title Organiza tus eventos privados. Donde y con quien quieras
         .main-section__buttons
           el-button.main-section__buttons-second(type="text")
-            router-link(:to="{name: 'signin'}") Iniciar sesión
-          el-button(type="primary" round)
             router-link(:to="{name: 'signup'}") Crear una cuenta
+          el-button(type="primary" round)
+            router-link(:to="{name: 'signin'}") Iniciar sesión
 </template>
 <script>
 export default {

@@ -4,6 +4,7 @@
 }
 
 @mixin gradienBlueBackground {
+  height: 100vh;
   background: rgb(0, 160, 227);
   background: linear-gradient(180deg, rgba(0, 160, 227, 1) 0%, rgba(130, 210, 234, 1) 100%);
 }
