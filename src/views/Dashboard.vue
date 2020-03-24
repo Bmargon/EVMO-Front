@@ -1,17 +1,40 @@
 <template lang="pug">
-  section.main-section
-    article.main-section__logo
-      img(src="../assets/img/logo-text.png")
-    article.main-section__content
-        h1.main-section__title Organiza tus eventos privados. Donde y con quien quieras
-        .main-section__buttons
-          el-button.main-section__buttons-second(type="text")
-            router-link(:to="{name: 'signup'}") Crear una cuenta
-          el-button(type="primary" round)
-            router-link(:to="{name: 'signin'}") Iniciar sesión
+  div
+    section.main-section
+      article.main-section__logo
+        img(src="../assets/img/logo-text.png")
+      article.main-section__content
+          h1.main-section__title Organiza tus eventos privados. Donde y con quien quieras
+          .main-section__buttons
+            el-button.main-section__buttons-second(type="text")
+              router-link(:to="{name: 'signup'}") Crear una cuenta
+            el-button(@click="showModal" type="primary" round) Iniciar sesión
+              router-link(:to="{name: 'signin'}")
+    section
+      sign-in-modal(
+        :openDialog="dialogSignInShow"
+        @closeDialog="dialogSignInHide")
 </template>
 <script>
+import SignInModal from '@/components/SignInModal'
+
 export default {
+  data () {
+    return {
+      dialogSignInShow: false
+    }
+  },
+  components: {
+    SignInModal
+  },
+  methods: {
+    showModal () {
+      this.dialogSignInShow = true
+    },
+    dialogSignInHide () {
+      this.dialogSignInShow = false
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -22,6 +45,7 @@ export default {
   background-attachment: fixed;
   padding: $--standart-separator;
   background-repeat: no-repeat;
+  background-size: cover;
   &__logo img{
     width: 10rem;
   }
