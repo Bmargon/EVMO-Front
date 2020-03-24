@@ -4,8 +4,8 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import ElementUI from 'element-ui'
-import '@/assets/scss/main.scss'
 import 'element-ui/lib/theme-chalk/index.css'
+import '@/assets/scss/main.scss'
 
 // // //
 Vue.use(ElementUI)
