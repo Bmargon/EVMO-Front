@@ -70,7 +70,7 @@ export default {
     }
   },
   methods: {
-    submitForm (form) {
+    submitForm () {
       this.$refs.form.validate((valid) => {
         if (valid) {
           alert('submit!')
