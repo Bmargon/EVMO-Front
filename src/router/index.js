@@ -1,9 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
+// // //
+// Components
+// // //
+import Dashboard from '@/views/Dashboard'
+// // //
 Vue.use(VueRouter)
 
+// // //
+// Rutas
+// // //
 const routes = [
+  { path: '/dashboard', component: Dashboard },
+  { path: '**', component: Dashboard }
 
 ]
 
