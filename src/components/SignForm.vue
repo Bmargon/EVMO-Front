@@ -77,8 +77,7 @@ export default {
       console.log(form)
       this.$refs.form.validate((valid) => {
         if (valid) {
-          alert('submit!')
-          this.createUser(this.form)
+          const loginSuccess = await this.createUser(this.form)
         } else {
           return false
         }

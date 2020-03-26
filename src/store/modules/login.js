@@ -17,10 +17,10 @@ const actions = {
         }
       })
       if (newUser) {
-        console.log('registro ok')
+        return true
       }
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 }
