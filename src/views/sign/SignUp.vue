@@ -18,7 +18,8 @@ export default {
   flex-direction: column;
   justify-content: center;
   padding: $--standart-separator;
-  @include gradienBlueBackground;
+  background-image: url('../../assets/img/party-smoke.jpg');
+  height: 100%;
   &__title {
     @include title1($--white);
     margin-bottom: $--standart-content;

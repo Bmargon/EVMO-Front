@@ -4,7 +4,6 @@ import VueRouter from 'vue-router'
 // Components
 // // //
 import Dashboard from '@/views/Dashboard'
-import SignIn from '@/views/sign/SignIn'
 import SignUp from '@/views/sign/SignUp'
 // // //
 Vue.use(VueRouter)
@@ -14,7 +13,6 @@ Vue.use(VueRouter)
 // // //
 const routes = [
   { path: '/dashboard', name: 'home', component: Dashboard },
-  { path: '/signin', name: 'signin', component: SignIn },
   { path: '/signup', name: 'signup', component: SignUp },
   // // //
   { path: '**', component: Dashboard }

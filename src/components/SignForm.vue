@@ -1,19 +1,20 @@
 <template lang="pug">
-  div.form
-    el-form(:model="form.form" :rules="rules" ref="form" )
-      el-form-item(prop="name")
-        el-input(v-model="form.name" placeholder="Nombre")
-      el-form-item(prop="surname")
-        el-input(v-model="form.surname" placeholder="Apellidos")
-      el-form-item(prop="email")
-        el-input( v-model="form.email" placeholder="Email")
-      el-form-item(prop="password")
-        el-input(type="password" v-model="form.password" placeholder="Contraseña")
-      el-form-item(prop="password2")
-        el-input(type="password" v-model="form.password2"  placeholder="Repita contraseña")
-      el-form-item(prop="ageVerification" label="Soy mayor de dieciocho años")
-        el-switch(v-model="form.ageVerification" )
-      el-button(type="primary" @click="submitForm('form')") Registrarse
+  .form
+    el-form(:model="form" ref="form" :rules="rules")
+      el-form-item( prop="name" label="Nombre")
+        el-input(v-model="form.name")
+      el-form-item( prop="surname" label="Apellido")
+        el-input(v-model="form.surname")
+      el-form-item( prop="email" label="Email")
+        el-input(v-model="form.email")
+      el-form-item( prop="password" label="Contraseña")
+        el-input(type="password" v-model="form.password" )
+      el-form-item( prop="password2" label="Repita contraseña")
+        el-input(type="password" v-model="form.password2")
+      .form__buttons
+        el-button(type="text" @click.native.prevent="signIn") Iniciar sesión
+        el-button(type="primary" round @click="submitForm") Registrarse
+
 </template>
 <script>
 export default {
@@ -32,7 +33,7 @@ export default {
     var validatePass2 = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('Porfavor, repita la contraseña'))
-      } else if (value !== this.form.password2) {
+      } else if (value !== this.form.password) {
         callback(new Error('Las contraseñas no coinciden'))
       } else {
         callback()
@@ -78,10 +79,27 @@ export default {
           return false
         }
       })
+    },
+    signIn () {
+      this.$router.push({ name: 'home' })
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: $--standart-separator;
+  }
+}
+
+/deep/.el-form-item__label {
+  color: $--white;
+}
 </style>
