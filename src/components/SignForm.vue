@@ -17,6 +17,7 @@
 
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'singForm',
   data () {
@@ -71,10 +72,13 @@ export default {
     }
   },
   methods: {
-    submitForm () {
+    ...mapActions(['createUser']),
+    submitForm (form) {
+      console.log(form)
       this.$refs.form.validate((valid) => {
         if (valid) {
           alert('submit!')
+          this.createUser(this.form)
         } else {
           return false
         }
