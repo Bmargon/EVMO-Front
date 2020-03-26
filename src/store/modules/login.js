@@ -1,12 +1,20 @@
 const axios = require('axios').default
 
-const getters = {}
-const state = {}
-const mutations = {}
+const getters = {
+  userSuccess: state => state.user
+}
+const state = {
+  user: ''
+}
+const mutations = {
+  'userSuccess' (state, payload) {
+    state.user = payload
+  }
+}
 const actions = {
   async createUser ({ commit }, payload) {
     try {
-      const newUser = await axios({
+      await axios({
         method: 'POST',
         url: 'http://localhost:3000/user',
         data: {
@@ -16,11 +24,10 @@ const actions = {
           password: payload.password
         }
       })
-      if (newUser) {
-        return true
-      }
+      commit('userSuccess', true)
     } catch (error) {
-      console.error(error)
+      commit('userSuccess', false)
+      console.log(error)
     }
   }
 }

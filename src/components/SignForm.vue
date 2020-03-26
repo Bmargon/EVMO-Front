@@ -17,7 +17,7 @@
 
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'singForm',
   data () {
@@ -71,21 +71,34 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapGetters(['userSuccess'])
+  },
+  watch: {
+    userSuccess () {
+      if (this.userSuccess) {
+        this.$swal({
+          icon: 'success',
+          title: 'Bienvenido!',
+          text: 'inicia sesión a conitnuación',
+          timer: 3000
+        })
+      } else {
+        this.$swal({
+          icon: 'error',
+          title: 'Oh No!',
+          text: 'el email ya está en uso',
+          timer: 3000
+        })
+      }
+    }
+  },
   methods: {
     ...mapActions(['createUser']),
-    submitForm (form) {
-      console.log(form)
-      this.$refs.form.validate((valid) => {
-        if (valid) {
-          const loginSuccess = await this.createUser(this.form)
-        } else {
-          return false
-        }
-      })
+    submitForm () {
+      this.$refs.form.validate((valid) => { if (valid) this.createUser(this.form) })
     },
-    signIn () {
-      this.$router.push({ name: 'home' })
-    }
+    signIn () { this.$router.push({ name: 'home' }) }
   }
 }
 </script>
