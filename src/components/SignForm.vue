@@ -83,6 +83,7 @@ export default {
           text: 'inicia sesión a conitnuación',
           timer: 3000
         })
+        this.$router.push({ name: 'home' })
       } else {
         this.$swal({
           icon: 'error',
