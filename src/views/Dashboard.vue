@@ -46,8 +46,12 @@ export default {
   padding: $--standart-separator;
   background-repeat: no-repeat;
   background-size: cover;
-  &__logo img{
-    width: 10rem;
+  &__logo {
+    display: flex;
+    justify-content: flex-end;
+    img{
+      width: 10rem;
+    }
   }
   &__content {
     height: 80%;
