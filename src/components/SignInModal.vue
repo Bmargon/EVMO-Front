@@ -1,4 +1,5 @@
 import signForm from '@/components/SignForm';
+import { mapActions } from 'vuex';
 <template lang="pug">
   el-dialog.modal(
     :visible="openDialog"
@@ -14,9 +15,11 @@ import signForm from '@/components/SignForm';
           el-input(type="password" v-model="form.password")
         .modal__buttons
           el-button(type="text") Cancelar
-          el-button(type="primary" round @click="signIn") Acceder
+          el-button(type="primary" round @click.native.prevent="loginUser") Acceder
 </template>
 <script>
+import { mapActions } from 'vuex'
+const axios = require('axios').default
 export default {
   name: 'SignInModal',
   props: ['openDialog'],
@@ -39,13 +42,34 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['setUser']),
     closeDialog () {
       this.$emit('closeDialog')
-      console.log('cerrado')
     },
-    signIn () {
-      this.loading = true
-      console.log(this.form)
+    async loginUser () {
+      try {
+        const user = await axios({
+          method: 'POST',
+          url: 'http://localhost:3000/login',
+          data: {
+            email: this.form.email,
+            password: this.form.password
+          }
+        })
+        this.setUser(user.data.userDB)
+        this.closeDialog()
+        this.loading = false
+        this.$router.push('/')
+      } catch (error) {
+        this.closeDialog()
+        this.$swal({
+          icon: 'error',
+          title: 'Oh No!',
+          text: 'los campos son incorrectos',
+          timer: 3000
+        })
+        console.log(error)
+      }
     }
   }
 }

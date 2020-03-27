@@ -1,17 +1,25 @@
 const axios = require('axios').default
 
 const getters = {
-  userSuccess: state => state.user
+  userSuccess: state => state.userSuccess,
+  userData: state => state.userData
 }
 const state = {
-  user: ''
+  userSuccess: '',
+  userData: {}
 }
 const mutations = {
   'userSuccess' (state, payload) {
-    state.user = payload
+    state.userSuccess = payload
+  },
+  'userData' (state, payload) {
+    state.userData = payload
   }
 }
 const actions = {
+  setUser ({ commit }, payload) {
+    commit('userData', payload)
+  },
   async createUser ({ commit }, payload) {
     try {
       await axios({

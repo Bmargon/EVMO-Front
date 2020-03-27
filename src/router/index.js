@@ -5,7 +5,7 @@ import VueRouter from 'vue-router'
 // // //
 import Dashboard from '@/views/Dashboard'
 import SignUp from '@/views/sign/SignUp'
-import UserAccount from '@/views/UserAccount'
+import Middleware from '@/views/Middleware'
 // // //
 Vue.use(VueRouter)
 
@@ -15,7 +15,7 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/dashboard', name: 'home', component: Dashboard },
   { path: '/signup', name: 'signup', component: SignUp },
-  { path: '/', name: 'UserAccount', component: UserAccount },
+  { path: '/', name: 'middleware', component: Middleware },
   // // //
   { path: '**', component: Dashboard }
 
