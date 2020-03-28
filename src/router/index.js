@@ -8,6 +8,9 @@ import VueRouter from 'vue-router'
 import Dashboard from '@/views/Dashboard'
 import SignUp from '@/views/sign/SignUp'
 import Middleware from '@/views/Middleware'
+import Events from '@/views/auth/Events'
+import Tickets from '@/views/auth/Tickets'
+import Profile from '@/views/auth/Profile'
 // // //
 Vue.use(VueRouter)
 
@@ -23,7 +26,11 @@ const routes = [
     } else {
       next()
     }
-  }, children: [] },
+  }, children: [
+    { path: '/events', name: 'events', component: Events },
+    { path: '/tickets', name: 'tickets', component: Tickets },
+    { path: '/profile', name: 'profile', component: Profile },
+  ] },
   // // //
   { path: '**', component: Dashboard }
 

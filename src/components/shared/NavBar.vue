@@ -1,13 +1,13 @@
 <template lang="pug">
   section.navbar
     .navbar__item
-      router-link(:to="'/'")
+      router-link(:to="{name: 'events'}")
         img.navbar__item-img(src="@/assets/img/m.png", alt="alt")
     .navbar__item
-      router-link(:to="'/'")
+      router-link(:to="{name: 'tickets'}")
         i.el-icon-s-ticket
     .navbar__item
-      router-link(:to="'/'")
+      router-link(:to="{name: 'profile'}")
         i.el-icon-user-solid
 </template>
 
