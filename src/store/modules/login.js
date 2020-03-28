@@ -18,6 +18,7 @@ const mutations = {
 }
 const actions = {
   setUser ({ commit }, payload) {
+    localStorage.setItem('token', payload.token)
     commit('userData', payload)
   },
   async createUser ({ commit }, payload) {

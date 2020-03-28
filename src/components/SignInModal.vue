@@ -56,7 +56,7 @@ export default {
             password: this.form.password
           }
         })
-        this.setUser(user.data.userDB)
+        this.setUser(user.data)
         this.closeDialog()
         this.loading = false
         this.$router.push('/')

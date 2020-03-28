@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 // // //
@@ -15,19 +17,17 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/dashboard', name: 'home', component: Dashboard },
   { path: '/signup', name: 'signup', component: SignUp },
-  { path: '/', name: 'middleware', component: Middleware },
+  { path: '/', name: 'middleware', component: Middleware, meta: { Auth: false }, beforeEnter: (to, from, next) => {
+    if (!localStorage.getItem('token')) {
+      next({ name: 'home' })
+    } else {
+      next()
+    }
+  }, children: [] },
   // // //
   { path: '**', component: Dashboard }
 
 ]
-
-// routes.beforeEach((to, from, next) => {
-//   //Aqui checas, si tiene una sesion o un token y el usuario quiere ir a la ruta login, no lo permites //y lo mandas a la raiz
-//   // if (to.name === 'UserAccount' && router.app.$session.exists()) {
-//   //   router.push('/')
-//   // }
-//   // next()
-// })
 
 const router = new VueRouter({
   mode: 'history',
