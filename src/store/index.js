@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 // Modules
 // // //
 import loginModule from './modules/login'
+import eventsModule from './modules/events'
 
 Vue.use(Vuex)
 
@@ -15,6 +16,7 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    loginModule
+    loginModule,
+    eventsModule
   }
 })
